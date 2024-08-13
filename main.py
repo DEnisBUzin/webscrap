@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+from tools import logger_HW_1
+
 
 # URL для поиска вакансий Python в Москве и Санкт-Петербурге
 base_url = "https://hh.ru/search/vacancy?enable_snippets=true&order_by=publication_time&ored_clusters=true&search_period=7&area=1&area=2&search_field=name&search_field=company_name&search_field=description&text=Python&L_save_area=true"
@@ -19,6 +21,7 @@ status = True
 
 
 # Получение всех вакансий со страницы
+@logger_HW_1
 def fetch_description(link):
     response = requests.get(link, headers=headers)
     if response.status_code == 200:
